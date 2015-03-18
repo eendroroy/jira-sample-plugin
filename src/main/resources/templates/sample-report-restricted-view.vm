@@ -1,0 +1,12 @@
+<html>
+<head>
+    $webResourceManager.requireResource("com.nascenia.tutorial.tutorialplugin:tutorialplugin-resources")
+</head>
+<body>
+<span class="tutorial-plugin-nascenia-logo">&nbsp;</span>
+
+<h2><span class="tutorial-plugin-error">Access Denied for <a
+        href="$BASE_URL/secure/ViewProfile.jspa?name=$USER_ID">$USER_NAME</a></span></h2>
+<span class="tutorial-plugin-info">Only members of <strong>"$GROUP_NAME"</strong> group can execute this report.</span>
+</body>
+</html>

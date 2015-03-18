@@ -1,0 +1,22 @@
+<table>
+    <tr>
+        <th>Key</th>
+        <th>Summary</th>
+        <th>Reporter</th>
+        <th>Assignee</th>
+        <th>Original Estimate</th>
+        <th>Time Spent</th>
+        <th>Remaining Estimate</th>
+    </tr>
+    #foreach($issueDetail in $issueDetails)
+        <tr>
+            <td>$issueDetail.get("key")</td>
+            <td>$issueDetail.get("summary")</td>
+            <td>$issueDetail.get("reporter").getDisplayName()</td>
+            <td>$issueDetail.get("assignee").getDisplayName()</td>
+            <td>$issueDetail.get("originalEstimate")</td>
+            <td>$issueDetail.get("timeSpent")</td>
+            <td>$issueDetail.get("remainingEstimate")</td>
+        </tr>
+    #end
+</table>

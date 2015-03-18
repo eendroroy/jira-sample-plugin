@@ -1,0 +1,42 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="tutorialplugin"/>
+
+    <!-- add our web resources -->
+    <web-resource key="tutorialplugin-resources" name="tutorialplugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+        <resource type="download" name="tutorialplugin.css" location="/css/tutorialplugin.css"/>
+        <resource type="download" name="tutorialplugin.js" location="/js/tutorialplugin.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>tutorialplugin</context>
+    </web-resource>
+
+    <!-- import from the product container -->
+    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties"/>
+    <component-import key="userManager" interface="com.atlassian.sal.api.user.UserManager"/>
+
+    <gadget key="tutorial-gadget" name="Tutorial Gadget" location="gadgets/tutorial-gadget.xml"/>
+
+    <rest key="nascenia-rest-resources" path="/nascenia" version="1.0">
+        <description>Provides the REST resource for the Gadgets.</description>
+    </rest>
+
+    <report key="samplereport" i18n-name-key="samplereport.name" class="com.nascenia.tutorial.jira.report.SampleReport">
+        <description key="samplereport.description">Sample Jira Report</description>
+        <resource type="velocity" name="view" location="templates/sample-report-html-view.vm" />
+        <resource type="velocity" name="excel" location="templates/sample-report-excel-view.vm" />
+        <resource type="velocity" name="restricted" location="templates/sample-report-restricted-view.vm" />
+        <label key="samplereport.key"/>
+    </report>
+
+</atlassian-plugin>

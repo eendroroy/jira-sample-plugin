@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="__MSG_gadget.title__"
+                 directory_title="__MSG_gadget.title__"
+                 description="__MSG_gadget.description__">
+        <Optional feature="gadget-directory">
+            <Param name="categories">
+                Others
+            </Param>
+        </Optional>
+        <Require feature="views"/>
+        <Require feature="settitle"/>
+        <Require feature="setprefs"/>
+        <Require feature="oauthpopup"/>
+        <Require feature="dynamic-height"/>
+        <Optional feature="atlassian.util"/>
+        <Optional feature="auth-refresh"/>
+        #oauth
+        #supportedLocales("gadget.common")
+        <Locale>
+            <messagebundle>
+                <msg name="gadget.title">Tutorial Gadget</msg>
+                <msg name="gadget.description">Tutorial Gadget</msg>
+            </messagebundle>
+        </Locale>
+    </ModulePrefs>
+    <UserPref name="refresh" datatype="hidden" default_value="false"/>
+    <UserPref name="isConfigured" datatype="hidden" default_value="false"/>
+    <UserPref name="projectID" datatype="hidden" default_value="TS"/>
+    <UserPref name="alignment" datatype="hidden" default_value="right"/>
+    <Content type="html">
+        <![CDATA[
+        #requireResource("com.atlassian.gadgets.publisher:ajs-gadgets")
+        #requireResource("com.atlassian.jira.gadgets:jira-global")
+        #requireResource("com.atlassian.jira.gadgets:autocomplete")
+        #requireResource("com.nascenia.tutorial.tutorialplugin:tutorialplugin-resources")
+        #includeResources()
+
+        <span class="tutorial-plugin-nascenia-logo" >&nbsp;</span>
+
+        <script type="text/javascript">
+            (function () {
+                var gadget = AJS.Gadget({
+                    baseUrl: "__ATLASSIAN_BASE_URL__",
+                    useOauth: "/rest/gadget/1.0/currentUser",
+                    config: { /* configuration options */
+                        descriptor: function(args)
+                        {
+                            var gadget = this;
+                            return {
+                                fields: [
+                                    {
+                                        id: "projectID",
+                                        class: "project-select-list",
+                                        userpref: "projectId",
+                                        label: "Project",
+                                        description: "Select a project",
+                                        type: "select",
+                                        selected: gadget.getPref("projectId"),
+                                        options: args.options.options
+                                    },
+                                    {
+                                        id: "align",
+                                        class: "alignment-radio",
+                                        userpref: "alignment",
+                                        label: "Alignment",
+                                        description: "Select Alignment",
+                                        type: "radio",
+                                        selected: gadget.getPref("alignment"),
+                                        options:[
+                                                    { label: "Left",   value: "left" },
+                                                    { label: "Center", value: "center" },
+                                                    { label: "Right",  value: "right" }
+                                                 ]
+                                    },
+                                    AJS.gadget.fields.nowConfigured()
+                                ]
+                            };
+                        },
+                         args: [
+                                {
+                                    key: "options",
+                                    ajaxOptions: "/rest/nascenia/1.0/projects.json"
+                                }
+                         ]
+                    },
+                    view: {
+                        onResizeReload: true, /* automatically reload gadget upon resize */
+                        enableReload: true,   /* enables "Refresh" option */
+                        template: function(args) { /* view options */
+                            var gadget = this;
+                            var projectListView = AJS.$("<ol/>").attr(
+                                {style: "text-align: "+gadget.getPref("alignment")+";"}
+                            );
+
+                            AJS.$(args.projectList.options).each(function() {
+                                var classVal = "";
+                                if(gadget.getPref("projectId") == this.value) classVal = "tutorial-plugin-selected";
+                                projectListView.append(AJS.$("<li/>")
+                                .attr({class: classVal})
+                                .append(
+                                    AJS.$("<a/>")
+                                    .attr({href: "__ATLASSIAN_BASE_URL__"+"/browse/"+this.value})
+                                    .text(this.label)
+                                ));
+                            });
+                            gadget.getView().html(projectListView);
+                            gadgets.window.adjustHeight();
+                        },
+                        args: [{
+                            key: "projectList",
+                            ajaxOptions: function() {
+                                return {
+                                    url: "/rest/nascenia/1.0/projects.json"
+                                };
+                            }
+                        }]
+                    }
+                });
+            })();
+        </script>
+        ]]>
+    </Content>
+</Module>

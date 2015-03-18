@@ -1,0 +1,16 @@
+.tutorial-plugin-info{
+    color: #007200;
+}
+.tutorial-plugin-error{
+    color: #b22222;
+}
+.tutorial-plugin-selected{
+    font-weight: bold;
+}
+
+.tutorial-plugin-nascenia-logo{
+    background : url("images/Nascenia-logo1.png") no-repeat center top;
+    display: block;
+    text-align: center;
+    height: 35px;
+}

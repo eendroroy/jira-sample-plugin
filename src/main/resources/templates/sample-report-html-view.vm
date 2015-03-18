@@ -1,0 +1,49 @@
+<html>
+<head>
+    $webResourceManager.requireResource("com.nascenia.tutorial.tutorialplugin:tutorialplugin-resources")
+</head>
+<body>
+<table width="100%" class="report" id="single_groupby_report_table">
+    <tr>
+        <td colspan="2">
+            <span class="tutorial-plugin-nascenia-logo" >&nbsp;</span>
+        </td>
+    </tr>
+    <tr>
+        <th class="reportHeading" colspan="2" style="border-top: 15px solid transparent;">
+            <h2>
+                Sample Report
+            </h2>
+        </th>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <th>Key</th>
+                    <th>Summary</th>
+                    <th>Reporter</th>
+                    <th>Assignee</th>
+                    <th>Original Estimate</th>
+                    <th>Time Spent</th>
+                    <th>Remaining Estimate</th>
+                </tr>
+                #foreach($issueDetail in $issueDetails)
+                    <tr>
+                        <td><a href="$BASE_URL/browse/$issueDetail.get("key")">$issueDetail.get("key")</a></td>
+                        <td><a href="$BASE_URL/browse/$issueDetail.get("key")">$issueDetail.get("summary")</a></td>
+                        <td><a href="$BASE_URL/secure/ViewProfile.jspa?name=$issueDetail.get(
+                            "reporter").getName()">$issueDetail.get("reporter").getDisplayName()</a></td>
+                        <td><a href="$BASE_URL/secure/ViewProfile.jspa?name=$issueDetail.get(
+                            "assignee").getName()">$issueDetail.get("assignee").getDisplayName()</a></td>
+                        <td>$math.roundTo(2, $issueDetail.get("originalEstimate"))</td>
+                        <td>$math.roundTo(2, $issueDetail.get("timeSpent"))</td>
+                        <td>$math.roundTo(2, $issueDetail.get("remainingEstimate"))</td>
+                    </tr>
+                #end
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
