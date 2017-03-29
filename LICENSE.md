@@ -1,13 +1,6 @@
-To avoid future confusion, we recommend that you include a license with your plugin.
-This file is simply a reminder.
+MIT License
 
-For a template license you can have a look at: http://www.opensource.org/licenses/
-
-Atlassian releases most of its modules under the Apache2 license: http://opensource.org/licenses/Apache-2.0
-=======
-The MIT License (MIT)
-
-Copyright (c) 2016 Indrajit Roy
+Copyright (c) 2017 indrajit
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
