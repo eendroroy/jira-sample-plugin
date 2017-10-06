@@ -1,4 +1,4 @@
-package com.nascenia.tutorial.jira.rest.projects;
+package com.tutorial.jira.rest.projects;
 
 import com.atlassian.crowd.embedded.api.User;
 import com.atlassian.jira.project.Project;

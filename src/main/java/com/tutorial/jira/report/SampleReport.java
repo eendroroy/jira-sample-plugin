@@ -1,4 +1,4 @@
-package com.nascenia.tutorial.jira.report;
+package com.tutorial.jira.report;
 
 import com.atlassian.crowd.embedded.api.User;
 import com.atlassian.jira.bc.issue.search.SearchService;
@@ -24,7 +24,7 @@ import java.util.*;
 /**
  * Created on 3/5/15.
  * Project tutorialplugin.
- * Package com.nascenia.tutorial.jira.report
+ * Package com.tutorial.jira.report
  *
  * @author indrajit
  */

@@ -1,4 +1,4 @@
-package com.nascenia.tutorial.jira.rest.projects;
+package com.tutorial.jira.rest.projects;
 
 import net.jcip.annotations.Immutable;
 

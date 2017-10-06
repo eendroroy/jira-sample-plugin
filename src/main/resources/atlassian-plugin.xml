@@ -31,7 +31,7 @@
         <description>Provides the REST resource for the Gadgets.</description>
     </rest>
 
-    <report key="samplereport" i18n-name-key="samplereport.name" class="com.nascenia.tutorial.jira.report.SampleReport">
+    <report key="samplereport" i18n-name-key="samplereport.name" class="com.tutorial.jira.report.SampleReport">
         <description key="samplereport.description">Sample Jira Report</description>
         <resource type="velocity" name="view" location="templates/sample-report-html-view.vm" />
         <resource type="velocity" name="excel" location="templates/sample-report-excel-view.vm" />
