@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.nascenia.tutorial</groupId>
+    <groupId>com.tutorial</groupId>
     <artifactId>tutorialplugin</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -15,7 +15,7 @@
     </organization>
 
     <name>tutorialplugin</name>
-    <description>This is the com.nascenia.tutorial:tutorialplugin plugin for Atlassian JIRA.</description>
+    <description>This is the com.tutorial:tutorialplugin plugin for Atlassian JIRA.</description>
     <packaging>atlassian-plugin</packaging>
 
     <repositories>
